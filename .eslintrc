@@ -1,0 +1,12 @@
+// ESLint 检查 .vue 文件需要单独配置编辑器：
+// https://eslint.vuejs.org/user-guide/#editor-integrations
+{
+  "parserOptions": {
+    "requireConfigFile": false,
+  },
+  "extends": ["taro/vue3"],
+  "rules": {
+    "comma-dangle": "off",
+    "vue/multi-word-component-names": "off",
+  },
+}
