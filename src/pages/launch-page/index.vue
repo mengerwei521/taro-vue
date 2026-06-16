@@ -1,16 +1,15 @@
 <!-- LaunchPage 页面 - 路由: pages/launch-page/index -->
 <template>
-  <view class="launch-page-page">
+  <view class="launch-page-page function_flex">
     <PrivacyAgreement />
   </view>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
 import { definePlatformComponents } from "@/utils/platformComponents";
+import privacyagreement from "@/subPackages/mainPackageModule/components/weapp/PrivacyAgreement.vue";
 const PrivacyAgreement = definePlatformComponents({
-  weapp: () =>
-    import("@/subPackages/mainPackageModule/components/weapp/PrivacyAgreement.vue"),
+  weapp: privacyagreement,
 });
 // 页面配置
 defineOptions({

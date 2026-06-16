@@ -1,44 +1,54 @@
 <template>
   <div class="privacy-agreement">
+    1111111111
     <div class="popup" v-if="show">
       <div class="title">隐私政策提示</div>
       <div class="content">
         <span>请您在使用前点击</span>
         <span class="desc" @tap="openPrivacyContract">《隐私政策》</span>
-        <span>并仔细阅读，如您同意全部内容，请点击同意开始使用我们的服务。</span>
+        <span
+          >并仔细阅读，如您同意全部内容，请点击同意开始使用我们的服务。</span
+        >
       </div>
       <div class="footer">
-        <button class="item-btn disagree-btn" @tap="onDisAgree">不同意并退出</button>
-        <button class="item-btn agree-btn" open-type="agreePrivacyAuthorization"
-          @agreeprivacyauthorization="onAgree">同意并继续</button>
+        <button class="item-btn disagree-btn" @tap="onDisAgree">
+          不同意并退出
+        </button>
+        <button
+          class="item-btn agree-btn"
+          open-type="agreePrivacyAuthorization"
+          @agreeprivacyauthorization="onAgree"
+        >
+          同意并继续
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-defineOptions({ name: 'PrivacyAgreement' });
+defineOptions({ name: "PrivacyAgreement" });
 let timer = null;
 let show = ref(false);
 let tranShow = ref(false);
 onMounted(() => {
-
-})
+  console.log(Taro.canIUse("getPrivacySetting"), "111111");
+});
 onUnmounted(() => {
   if (timer) {
-    clearTimeout(timer)
+    clearTimeout(timer);
   }
-})
+});
 // 跳转至隐私协议页面
 function openPrivacyContract() {
   wx.openPrivacyContract({
-    success: res => {
-      console.log('openPrivacyContract success')
+    success: (res) => {
+      console.log("openPrivacyContract success");
     },
-    fail: res => {
-      console.error('openPrivacyContract fail', res)
-    }
-  })
+    fail: (res) => {
+      console.error("openPrivacyContract fail", res);
+    },
+  });
 }
 //打开弹框
 function openPopUp() {
@@ -56,16 +66,14 @@ function closePopUp() {
 }
 //不同意
 function onDisAgree() {
-  this.$emit('disagree')
-  closePopup()
+  this.$emit("disagree");
+  closePopup();
 }
 //同意
 function onAgree() {
-  this.$emit('agree')
-  closePopup()
+  this.$emit("agree");
+  closePopup();
 }
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -104,11 +112,11 @@ function onAgree() {
       margin: 40px 30px 80px 30px;
       font-size: 28px;
       font-weight: normal;
-      color: #6E6E6E;
+      color: #6e6e6e;
       line-height: 50px;
 
       .desc {
-        color: #328EF5;
+        color: #328ef5;
       }
     }
 
@@ -133,14 +141,14 @@ function onAgree() {
       }
 
       .disagree-btn {
-        border: 1px solid #FF7C00;
-        color: #FC8B2E;
+        border: 1px solid #ff7c00;
+        color: #fc8b2e;
         background-color: #fff;
       }
 
       .agree-btn {
-        background: linear-gradient(-4deg, #FD9D2E, #FBA92C);
-        color: #FFFFFF;
+        background: linear-gradient(-4deg, #fd9d2e, #fba92c);
+        color: #ffffff;
         text-align: center;
         padding: unset;
       }

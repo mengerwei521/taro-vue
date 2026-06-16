@@ -7,7 +7,7 @@ import Components from 'unplugin-vue-components/webpack'
 import AutoImport from 'unplugin-auto-import/webpack'
 const componentsPlugin = Components({
   resolvers: [NutUIResolver({ taro: true })],
-  dts: 'components.d.ts', // 按需开启 TypeScript 支持
+  dts: 'types/components.d.ts', // 按需开启 TypeScript 支持
 })
 const autoImportPlugin = AutoImport({
   imports: ['vue', 'pinia', {
@@ -90,8 +90,8 @@ export default defineConfig(async (merge, { command, mode }) => {
         }
       },
       webpackChain(chain) {
-        chain.plugin('unplugin-auto-import').use(autoImportPlugin)
-        chain.plugin('unplugin-vue-components').use(componentsPlugin)
+        chain.plugin('unplugin-auto-import').use(autoImportPlugin);
+        chain.plugin('unplugin-vue-components').use(componentsPlugin);
       }
     },
     h5: {

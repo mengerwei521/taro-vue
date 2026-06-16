@@ -2,9 +2,17 @@
 <template>
   <cover-view class="custom-tab-bar">
     <cover-view class="custom-tab-bar-border"></cover-view>
-    <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
-      <cover-view class="tab-bar-item-text" :style="{ color: selected === index ? selectedColor : color }">{{ item.text
-      }}</cover-view>
+    <cover-view
+      v-for="(item, index) in list"
+      :key="index"
+      class="tab-bar-item"
+      @tap="switchTab(index, item.pagePath)"
+    >
+      <cover-view
+        class="tab-bar-item-text"
+        :style="{ color: selected === index ? selectedColor : color }"
+        >{{ item.text }}</cover-view
+      >
     </cover-view>
   </cover-view>
 </template>
@@ -20,7 +28,7 @@ watch(
   (newVal) => {
     selected = newVal;
     console.log("customTabSelected更新为:", newVal);
-  }
+  },
 );
 // 组件配置
 defineOptions({

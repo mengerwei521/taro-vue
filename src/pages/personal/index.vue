@@ -1,14 +1,17 @@
 <!-- Personal 页面 - 路由: pages/personal/index -->
 <template>
   <view class="personal-page">
-    personal
-    <!-- <TabBar /> -->
+    personal333
+    <!-- <CustomTabBar1 /> -->
   </view>
 </template>
 
 <script setup>
-// import TabBar from '@/custom-tab-bar/H5TabBar.vue';
-
+import customTabBar from "@/custom-tab-bar/index.vue";
+import { definePlatformComponents } from "@/utils/platformComponents";
+const CustomTabBar = definePlatformComponents({
+  h5: () => customTabBar,
+});
 // 页面配置
 defineOptions({
   name: "Personal",

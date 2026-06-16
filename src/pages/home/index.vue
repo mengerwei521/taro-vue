@@ -1,18 +1,18 @@
 <!-- Home 页面 - 路由: pages/home/index -->
 <template>
   <view class="home-page">
-    home
-    <!-- 仅 H5 需要手动渲染 TabBar，小程序由框架自动处理 custom-tab-bar/index -->
-    <tab-bar v-if="isH5" />
+    home22
+    <CustomTabBar />
   </view>
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
 import { GetConfigInfor } from "@/api/public.js";
-
-const isH5 = process.env.TARO_ENV === 'h5'
-const TabBar = isH5 ? defineAsyncComponent(() => import('@/custom-tab-bar/index.vue')) : null
+import customTabBar from "@/custom-tab-bar/index.vue";
+import { definePlatformComponents } from "@/utils/platformComponents";
+const CustomTabBar = definePlatformComponents({
+  h5: customTabBar,
+});
 // 页面配置
 defineOptions({
   name: "Home",
