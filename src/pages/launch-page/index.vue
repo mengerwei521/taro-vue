@@ -1,7 +1,7 @@
 <!-- LaunchPage 页面 - 路由: pages/launch-page/index -->
 <template>
   <view class="launch-page-page function_flex">
-    <PrivacyAgreement />
+    <PrivacyAgreement @disagree="onDisagree" @agree="onAgree" />
   </view>
 </template>
 
@@ -22,11 +22,25 @@ const loading = ref(false);
 // 页面生命周期
 onMounted(() => {
   console.log("LaunchPage 页面已加载");
+  if (process.env.TARO_ENV == "h5") {
+    onAgree();
+  }
 });
 
 // 方法定义
 const handleClick = () => {
   console.log("点击了LaunchPage页面");
+};
+//不同意
+const onDisagree = () => {
+  console.log("onDisagree");
+};
+//同意
+const onAgree = () => {
+  console.log("onAgree");
+  Taro.reLaunch({
+    url: "/pages/home/index",
+  });
 };
 </script>
 

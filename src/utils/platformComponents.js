@@ -13,8 +13,15 @@ const WeappEmptyComponent = {
 export function definePlatformComponents(componentMap) {
   const env = process.env.TARO_ENV
   if (env === 'h5') {
-    const importer = componentMap.h5
-    return importer ? defineAsyncComponent(importer) : null
+    const importer = componentMap.h5;
+    console.log(importer, typeof componentMap.h5,)
+    if (typeof importer === 'function') {
+      // 是函数 → 异步加载
+      return defineAsyncComponent(importer)
+    } else {
+      // 是组件对象或其他 → 直接返回
+      return importer || null
+    }
   } else if (env === 'weapp') {
     // 小程序端直接返回静态组件对象（必须已经导入）
     return componentMap.weapp || null
@@ -25,6 +32,12 @@ export function definePlatformComponents(componentMap) {
 //import customTabBar from "@/custom-tab-bar/index.vue";-h5这样写是为了解决在npm run dev:weapp 小程序打包下的报错；
 // const TabBar = definePlatformComponents({
 //   h5:customTabBar,
+//   weapp:privacyagreement,   // 小程序端专用组件
+//   // 未定义的平台（如 swan、alipay）会自动使用空组件
+// })
+//   h5:import("@/custom-tab-bar/index.vue),如果想这样使用 TabBar必须独一无二 否则npm run dev:weapp 小程序打包下的报错；
+// const TabBar = definePlatformComponents({
+//   h5:()=>import("@/custom-tab-bar/index.vue),
 //   weapp:privacyagreement,   // 小程序端专用组件
 //   // 未定义的平台（如 swan、alipay）会自动使用空组件
 // })

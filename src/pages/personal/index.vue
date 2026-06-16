@@ -2,7 +2,7 @@
 <template>
   <view class="personal-page">
     personal333
-    <!-- <CustomTabBar1 /> -->
+    <CustomTabBar />
   </view>
 </template>
 

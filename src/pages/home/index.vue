@@ -13,6 +13,7 @@ import { definePlatformComponents } from "@/utils/platformComponents";
 const CustomTabBar = definePlatformComponents({
   h5: customTabBar,
 });
+console.log(CustomTabBar, customTabBar, "CustomTabBar");
 // 页面配置
 defineOptions({
   name: "Home",

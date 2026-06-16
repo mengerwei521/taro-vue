@@ -28,11 +28,36 @@
 
 <script setup>
 defineOptions({ name: "PrivacyAgreement" });
+// 声明可触发的事件
+const emit = defineEmits(["disagree", "agree"]);
 let timer = null;
 let show = ref(false);
 let tranShow = ref(false);
 onMounted(() => {
-  console.log(Taro.canIUse("getPrivacySetting"), "111111");
+  console.log(Taro.canIUse("getPrivacySetting"), onAgree, "111111");
+  //查询隐私授权情况。
+  if (Taro.canIUse("getPrivacySetting")) {
+    Taro.getPrivacySetting({
+      success: (res) => {
+        console.log(
+          "是否需要授权：",
+          res.needAuthorization,
+          "隐私协议的名称为：",
+          res.privacyContractName,
+        );
+        if (res.needAuthorization) {
+          openPopUp();
+        } else {
+          onAgree("agree");
+        }
+      },
+      fail: () => {},
+      complete: () => {},
+    });
+  } else {
+    // 低版本基础库不支持 wx.getPrivacySetting 接口，隐私接口可以直接调用
+    onAgree("agree");
+  }
 });
 onUnmounted(() => {
   if (timer) {
@@ -66,13 +91,13 @@ function closePopUp() {
 }
 //不同意
 function onDisAgree() {
-  this.$emit("disagree");
-  closePopup();
+  emit("disagree");
+  closePopUp();
 }
 //同意
 function onAgree() {
-  this.$emit("agree");
-  closePopup();
+  emit("agree");
+  closePopUp();
 }
 </script>
 
