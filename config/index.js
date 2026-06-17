@@ -120,7 +120,14 @@ export default defineConfig(async (merge, { command, mode }) => {
             namingPattern: 'module', // 转换模式，取值为 global/module
             generateScopedName: '[name]__[local]___[hash:base64:5]'
           }
-        }
+        },
+        pxtransform: {
+          enable: true,
+          config: {
+            // pxtransform 配置项，参考尺寸章节
+            designWidth: 375,
+          },
+        },
       },
       webpackChain(chain) {
         chain.plugin('unplugin-vue-components').use(componentsPlugin)
