@@ -4,12 +4,14 @@
   "description": "",
   "appid": "wxee7412b0c41874c6",
   "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "enhance": false,
-    "compileHotReLoad": false,
-    "postcss": false,
-    "minified": false
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "compileHotReLoad": true,
+    "postcss": true,
+    "minified": true,
+    "uglifyFileName": false,
+    "ignoreUploadUnusedFiles": false
   },
   "compileType": "miniprogram"
 }

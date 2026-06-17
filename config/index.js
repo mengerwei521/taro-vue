@@ -68,12 +68,6 @@ export default defineConfig(async (merge, { command, mode }) => {
       optimizeMainPackage: {
         enable: true, // 开启主包优化
       },
-      // 小程序配置
-      projectConfig: {
-        setting: {
-          urlCheck: false
-        }
-      },
       postcss: {
         pxtransform: {
           enable: true,
