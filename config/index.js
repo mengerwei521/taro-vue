@@ -31,7 +31,7 @@ export default defineConfig(async (merge, { command, mode }) => {
         return 375
       }
       // 全局使用 Taro 默认的 750 尺寸
-      return 750
+      return 375
     },
     deviceRatio: {
       640: 2.34 / 2,
@@ -120,13 +120,6 @@ export default defineConfig(async (merge, { command, mode }) => {
             namingPattern: 'module', // 转换模式，取值为 global/module
             generateScopedName: '[name]__[local]___[hash:base64:5]'
           }
-        },
-        pxtransform: {
-          enable: true,
-          config: {
-            // pxtransform 配置项，参考尺寸章节
-            designWidth: 375,
-          },
         },
       },
       webpackChain(chain) {
