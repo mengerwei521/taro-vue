@@ -74,8 +74,10 @@ function switchTab(index, url) {
     transform: scaleY(0.5);
   }
   .custom-tab-bar-list {
+    width: 100%;
+    display: flex;
     .tab-bar-item {
-      flex: 1;
+      width: 50%;
       text-align: center;
       display: flex;
       justify-content: center;
