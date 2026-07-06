@@ -16,7 +16,8 @@ export default {
     {
       root: "subPackages/pagesModule",
       name: "pagesModule",
-      pages: ['pages/demo/index'
+      pages: ['pages/demo/index',
+        'pages/meng/index'
       ],
     },
     {

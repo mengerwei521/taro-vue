@@ -35,7 +35,8 @@ const handleClick = () => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home-page {
+  font-size: 30px;
 }
 </style>
