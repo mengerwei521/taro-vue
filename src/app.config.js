@@ -1,10 +1,8 @@
 export default {
   entryPagePath: "pages/launch-page/index",
-  pages: [
-    'pages/launch-page/index',
+  pages: ['pages/launch-page/index',
     'pages/home/index',
     'pages/personal/index'
-
   ],
   subPackages: [
     {

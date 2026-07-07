@@ -1,22 +1,15 @@
 <!--  - 路由-页面: {{routePath}} -->
 <template>
-  <view class="{{kebabName}}-component">
-    <text>{{ PascalName }}</text>
-  </view>
+  <view :class="styles['{{kebabName}}-page']"> </view>
 </template>
 
 <script setup>
+import { ref } from "vue";
+import styles from "./index.module.{{styleExt}}";
+
 defineOptions({
   name: "{{PascalName}}",
 });
 
-const props = defineProps({
-  title: String,
-});
+// 自定义逻辑
 </script>
-
-<style lang="scss" scoped>
-.{{kebabName}}-component {
-  // 自定义样式
-}
-</style>

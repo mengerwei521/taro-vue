@@ -1,12 +1,13 @@
 <!-- Home 页面 - 路由: pages/home/index -->
 <template>
-  <view class="home-page">
+  <view :class="styles['home-page']">
     home22
     <CustomTabBar />
   </view>
 </template>
 
 <script setup>
+import styles from "./index.module.scss";
 import { GetConfigInfor } from "@/api/public.js";
 import customTabBar from "@/custom-tab-bar/index.vue";
 import { definePlatformComponents } from "@/utils/platformComponents";
@@ -34,9 +35,3 @@ const handleClick = () => {
   console.log("点击了Home页面");
 };
 </script>
-
-<style lang="scss" scoped>
-.home-page {
-  font-size: 30px;
-}
-</style>

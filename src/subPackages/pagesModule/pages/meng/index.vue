@@ -1,11 +1,10 @@
 <!--  - 路由-页面: subPackages/pagesModule/pages/meng/index -->
 <template>
-  <view class="meng-component">
-    <text>{{ PascalName }}</text>
-  </view>
+  <view :class="styles['meng-component']"></view>
 </template>
 
 <script setup>
+import styles from "./index.module.scss";
 defineOptions({
   name: "Meng",
 });
@@ -14,9 +13,3 @@ const props = defineProps({
   title: String,
 });
 </script>
-
-<style lang="scss" scoped>
-.meng-component {
-  // 自定义样式
-}
-</style>

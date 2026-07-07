@@ -1,13 +1,14 @@
 <!-- LaunchPage 页面 - 路由: pages/launch-page/index -->
 <template>
-  <view class="launch-page-page function_flex">
+  <view :class="[styles['launch-page'], 'function_flex']">
     <PrivacyAgreement @disagree="onDisagree" @agree="onAgree" />
   </view>
 </template>
 
 <script setup>
+import styles from "./index.module.scss";
 import { definePlatformComponents } from "@/utils/platformComponents";
-import privacyagreement from "@/subPackages/mainPackageModule/components/weapp/PrivacyAgreement.vue";
+import privacyagreement from "@/subPackages/mainPackageModule/components/weapp/PrivacyAgreement/index.vue";
 const PrivacyAgreement = definePlatformComponents({
   weapp: privacyagreement,
 });
@@ -43,8 +44,3 @@ const onAgree = () => {
   });
 };
 </script>
-
-<style lang="scss">
-.launch-page-page {
-}
-</style>

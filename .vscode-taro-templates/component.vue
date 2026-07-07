@@ -1,11 +1,11 @@
 <!--  - 路由-组件: {{routePath}} -->
 <template>
-  <view class="{{kebabName}}-component">
-    <text>{{ PascalName }}</text>
-  </view>
+  <view :class="styles['{{kebabName}}-component']"> </view>
 </template>
 
 <script setup>
+import styles from "./index.module.{{styleExt}}";
+
 defineOptions({
   name: "{{PascalName}}",
 });
@@ -14,9 +14,3 @@ const props = defineProps({
   title: String,
 });
 </script>
-
-<style lang="scss" scoped>
-.{{kebabName}}-component {
-  // 自定义样式
-}
-</style>
